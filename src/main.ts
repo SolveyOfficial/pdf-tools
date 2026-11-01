@@ -22,6 +22,10 @@ for (const tool of tools) {
   nav.append(tab);
 }
 
+// The page's own <title> stays on the default view, so search engines index it;
+// a tool picked by its address gets its own.
+const pageTitle = document.title;
+
 const show = () => {
   const id = location.hash.slice(1);
   const tool = tools.find((candidate) => candidate.id === id) ?? tools[0];
@@ -49,7 +53,7 @@ const show = () => {
       tab.removeAttribute("aria-current");
     }
   }
-  document.title = `${tool.heading} · Solvey PDF Tools`;
+  document.title = location.hash.length > 1 ? `${tool.heading}, free | Solvey` : pageTitle;
 };
 
 addEventListener("hashchange", show);
