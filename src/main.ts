@@ -22,8 +22,8 @@ for (const tool of tools) {
   nav.append(tab);
 }
 
-// The page's own <title> stays on the default view, so search engines index it;
-// a tool picked by its address gets its own.
+// The page's own <title> stays on the default view, so that is the one search
+// engines index; a tool picked by its address gets its own.
 const pageTitle = document.title;
 
 const show = () => {
@@ -53,7 +53,8 @@ const show = () => {
       tab.removeAttribute("aria-current");
     }
   }
-  document.title = location.hash.length > 1 ? `${tool.heading}, free | Solvey` : pageTitle;
+  document.title =
+    location.hash.length > 1 ? `${tool.heading}, free | Solvey` : pageTitle;
 };
 
 addEventListener("hashchange", show);
